@@ -1,9 +1,12 @@
 package com.example.squaregamespringboot;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDao {
 
     @Override
     public User createUser(User user) {
@@ -23,5 +26,18 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserById(int id) {
         return null;
+    }
+
+    @Autowired
+    public InMemoryUserDao userDao;
+
+    @Override
+    public ArrayList<String> getCurrentGame(String newGame) {
+        return userDao.getCurrentGame(newGame);
+    }
+
+    @Override
+    public boolean updateGame(User user) {
+        return false;
     }
 }
