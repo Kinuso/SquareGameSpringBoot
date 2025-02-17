@@ -1,4 +1,5 @@
-package com.example.squaregamespringboot;
+package com.example.squaregamespringboot.Controller;
+import com.example.squaregamespringboot.Service.HeartbeatSensor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

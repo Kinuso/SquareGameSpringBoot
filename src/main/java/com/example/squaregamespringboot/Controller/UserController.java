@@ -1,5 +1,11 @@
-package com.example.squaregamespringboot;
+package com.example.squaregamespringboot.Controller;
 
+import com.example.squaregamespringboot.Entity.User;
+import com.example.squaregamespringboot.Entity.UserCreationParams;
+import com.example.squaregamespringboot.Entity.UserDto;
+import com.example.squaregamespringboot.Entity.UserEntity;
+import com.example.squaregamespringboot.Repository.UserEntityRepository;
+import com.example.squaregamespringboot.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,11 +15,14 @@ public class UserController {
     @Autowired
     public UserService userService;
 
+    @Autowired
+    public UserEntityRepository userEntityRepository;
+
     @PostMapping("/users")
-    public User createUser(@RequestBody User params) {
+    public UserEntity createUser(@RequestBody UserEntity params) {
 // TODO - actually create a new user
-        User user = new User(params.id, params.email, params.password, params.name, params.surname);
-        return this.userService.createUser(user);
+        UserEntity userEntity = new UserEntity(params.getEmail(), params.getPassword());
+        return this.userEntityRepository.save(userEntity);
     }
 
     @GetMapping("/users/{userId}")

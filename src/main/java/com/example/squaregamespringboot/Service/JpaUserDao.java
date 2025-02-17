@@ -1,4 +1,7 @@
-package com.example.squaregamespringboot;
+package com.example.squaregamespringboot.Service;
+
+import com.example.squaregamespringboot.Entity.User;
+import com.example.squaregamespringboot.Entity.UserDao;
 
 import java.util.ArrayList;
 

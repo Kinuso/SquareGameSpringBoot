@@ -1,4 +1,4 @@
-package com.example.squaregamespringboot;
+package com.example.squaregamespringboot.Service;
 
 import org.springframework.stereotype.Service;
 

@@ -1,10 +1,9 @@
-package com.example.squaregamespringboot;
+package com.example.squaregamespringboot.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
 
-@Entity
 public class User {
 
     @Id

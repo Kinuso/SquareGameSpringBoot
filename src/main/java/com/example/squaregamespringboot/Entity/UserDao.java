@@ -1,4 +1,4 @@
-package com.example.squaregamespringboot;
+package com.example.squaregamespringboot.Entity;
 
 import java.util.ArrayList;
 
