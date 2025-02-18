@@ -8,11 +8,11 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface UserEntityRepository extends JpaRepository<UserEntity, Long> {
+public interface UserEntityRepository extends JpaRepository<UserEntity, String> {
 
     @Override
     @NotNull
-    Optional<UserEntity> findById(Long aLong);
+    Optional<UserEntity> findById(String s);
 
     @Override
     <S extends UserEntity> @NotNull S save(@NotNull S entity);
