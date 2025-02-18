@@ -1,18 +1,20 @@
 package com.example.squaregamespringboot.Service;
 
 import com.example.squaregamespringboot.Entity.User;
+import com.example.squaregamespringboot.Entity.UserDto;
+import com.example.squaregamespringboot.Entity.UserEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
-@Service
+
 public interface UserService {
 
-    User createUser(User user);
+    UserEntity createUser(UserEntity userEntity);
 
     User updateUser(User user);
 
-    User getUserById(int id);
+    UserDto getUserById(String id);
 
     User deleteUser(int id);
 

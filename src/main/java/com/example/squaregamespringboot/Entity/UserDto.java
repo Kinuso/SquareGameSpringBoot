@@ -3,7 +3,6 @@ package com.example.squaregamespringboot.Entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
-@Entity
 public final class UserDto {
 
     @Id
@@ -13,10 +12,6 @@ public final class UserDto {
     public UserDto(String email, String id) {
         this.email = email;
         this.id = id;
-    }
-
-    public UserDto() {
-
     }
 
     public void setEmail(String email) {
