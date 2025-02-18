@@ -1,6 +1,7 @@
 package com.example.squaregamespringboot.Service;
 
 import com.example.squaregamespringboot.Entity.User;
+import com.example.squaregamespringboot.Entity.UserDto;
 import com.example.squaregamespringboot.Entity.UserEntity;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,30 +13,29 @@ import java.util.UUID;
 import java.util.stream.Stream;
 
 @Service
-public class UserServiceImpl implements UserService, HeartbeatSensor, UserDao {
+public class UserServiceImpl implements UserService, HeartbeatSensor {
 
-    @Override
-    public User createUser(User user) {
-        return user;
+    @Autowired
+    private UserDao userDao;
+
+    public UserEntity createUser(UserEntity userEntity) {
+        return userDao.upsert(userEntity);
     }
 
-    @Override
+    public UserDto getUserById(String id) {
+
+        @NotNull Optional<UserEntity> user = userDao.findById(UUID.fromString(id));
+        return new UserDto(user.get().getEmail(), user.get().getId());
+    }
+
     public User deleteUser(int id) {
         return null;
     }
 
-    @Override
     public User updateUser(User user) {
         return null;
     }
 
-    @Override
-    public User getUserById(int id) {
-        return null;
-    }
-
-    @Autowired
-    public InMemoryUserDao userDao;
 
     @Override
     public ArrayList<String> getCurrentGame(String newGame) {
@@ -45,26 +45,6 @@ public class UserServiceImpl implements UserService, HeartbeatSensor, UserDao {
     @Override
     public boolean updateGame(User user) {
         return false;
-    }
-
-    @Override
-    public Stream<User> findAll() {
-        return Stream.empty();
-    }
-
-    @Override
-    public @NotNull Optional<UserEntity> findById(UUID UserEntity) {
-        return Optional.empty();
-    }
-
-    @Override
-    public UserEntity upsert(UserEntity userEntity) {
-        return null;
-    }
-
-    @Override
-    public void delete(UUID userId) {
-
     }
 
     @Override
