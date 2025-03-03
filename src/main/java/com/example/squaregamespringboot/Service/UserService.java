@@ -21,4 +21,7 @@ public interface UserService {
     ArrayList<String> getCurrentGame(String newGame);
 
     boolean updateGame(User user);
+
+    boolean isValidUser(String userId);
+
 }

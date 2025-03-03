@@ -10,6 +10,8 @@ import com.example.squaregamespringboot.Service.UserService;
 import com.example.squaregamespringboot.Service.UserServiceImpl;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -44,6 +46,16 @@ public class UserController {
     public boolean deleteUser(@PathVariable String userId) {
 // TODO - actually delete user'
         return true;
+    }
+
+    @GetMapping("/users/{userId}/validate")
+    public ResponseEntity<Void> validateUser(@PathVariable String userId) {
+        boolean isValid = userService.isValidUser(userId);
+        if (isValid) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
 }
